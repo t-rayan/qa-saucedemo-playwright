@@ -1,4 +1,5 @@
 import {Page,Locator} from '@playwright/test'
+import * as testData from '../test-data/data.json'
 
 export class LoginPage {
   readonly page: Page
@@ -15,8 +16,8 @@ export class LoginPage {
     this.errorMessage = page.locator('[data-test="error"]')
   }
 
-  async goto(): Promise<void> {
-    await this.page.goto('https://www.saucedemo.com/');
+  async navigate(): Promise<void> {
+    await this.page.goto(testData.baseUrl);
   }
 
   async login(username: string, password: string) {

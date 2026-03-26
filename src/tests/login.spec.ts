@@ -6,7 +6,7 @@ test.describe('Login module', () => {
 
   test('valid login redirects to inventory page', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.goto()
+    await loginPage.navigate()
     await loginPage.login(testData.userCredentials.standardUser, testData.userCredentials.password)
     await expect(page).toHaveURL(/inventory/)
     await expect(page.locator('.title')).toHaveText('Products')
@@ -14,7 +14,7 @@ test.describe('Login module', () => {
 
   test('wrong password shows invalid credentials error', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.goto()
+    await loginPage.navigate()
     await loginPage.login(testData.userCredentials.standardUser, testData.userCredentials.wrongPassword)
     const error = await loginPage.getErrorMessage()
     expect(error).toContain('Username and password do not match')
@@ -22,7 +22,7 @@ test.describe('Login module', () => {
 
   test('wrong username shows invalid credentials error', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.goto()
+    await loginPage.navigate()
     await loginPage.login(testData.userCredentials.wrongUsername, testData.userCredentials.password)
     const error = await loginPage.getErrorMessage()
     expect(error).toContain('Username and password do not match')
@@ -30,7 +30,7 @@ test.describe('Login module', () => {
 
   test('locked out user sees locked out error', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.goto()
+    await loginPage.navigate()
     await loginPage.login(testData.userCredentials.lockedOutUser, testData.userCredentials.password)
     const error = await loginPage.getErrorMessage()
     expect(error).toContain('locked out')
@@ -38,7 +38,7 @@ test.describe('Login module', () => {
 
   test('empty username shows required field error', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.goto()
+    await loginPage.navigate()
     await loginPage.login('', testData.userCredentials.password)
     const error = await loginPage.getErrorMessage()
     expect(error).toContain('Username is required')
@@ -46,7 +46,7 @@ test.describe('Login module', () => {
 
   test('empty password shows required field error', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.goto()
+    await loginPage.navigate()
     await loginPage.login(testData.userCredentials.standardUser, '')
     const error = await loginPage.getErrorMessage()
     expect(error).toContain('Password is required')
@@ -54,7 +54,7 @@ test.describe('Login module', () => {
 
   test('error message is dismissible', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.goto()
+    await loginPage.navigate()
     await loginPage.login(testData.userCredentials.problemUser, testData.userCredentials.wrongPassword)
     await expect(loginPage.errorMessage).toBeVisible()
     await page.locator('[data-test="error-button"]').click()
@@ -63,7 +63,7 @@ test.describe('Login module', () => {
 
   test('valid login after failed attempt succeeds', async ({ page }) => {
     const loginPage = new LoginPage(page)
-    await loginPage.goto()
+    await loginPage.navigate()
     await loginPage.login(testData.userCredentials.problemUser, testData.userCredentials.wrongPassword)
     await expect(loginPage.errorMessage).toBeVisible()
     await loginPage.login(testData.userCredentials.standardUser, testData.userCredentials.password)

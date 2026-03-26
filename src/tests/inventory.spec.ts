@@ -1,28 +1,26 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
-import * as testData from '../test-data/data.json' // 1. Import the new page
+import * as testData from '../test-data/data.json' 
 
-test.describe('Inventory page module', () => {
+test.describe('Inventory  module', () => {
     let loginPage: LoginPage;
-    let inventoryPage: InventoryPage; // 2. Declare the variable
-
+    let inventoryPage: InventoryPage; 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
-        inventoryPage = new InventoryPage(page); // 3. Initialize it
-
-        await loginPage.goto();
-        await loginPage.login(testData.userCredentials.standardUser, testData.userCredentials.password); // 4. Login automatically
+        inventoryPage = new InventoryPage(page); 
+        await loginPage.navigate();
+        await loginPage.login(testData.userCredentials.standardUser, testData.userCredentials.password); 
     });
 
     test('User can add a backpack to the cart', async () => {
-        await inventoryPage.addItemToCart(testData.items.backpack); // 5. Use the new page object to add item
+        await inventoryPage.addItemToCart(testData.items.backpack); 
         const count = await inventoryPage.getCartItemCount();
         expect(count).toBe(1);
     });
     test('User can add multiple products to the cart', async () => {
-        await inventoryPage.addItemToCart(testData.items.backpack); // 5. Use the new page object to add item
-        await inventoryPage.addItemToCart(testData.items.bikeLight); // 5. Use the new page object to add item
+        await inventoryPage.addItemToCart(testData.items.backpack); 
+        await inventoryPage.addItemToCart(testData.items.bikeLight); 
         const count = await inventoryPage.getCartItemCount();
         expect(count).toBe(2);
     });
