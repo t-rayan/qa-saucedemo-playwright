@@ -1,0 +1,22 @@
+{
+  "baseUrl": "https://www.saucedemo.com/",
+  "userCredentials": {
+    "standardUser": "standard_user",
+    "lockedOutUser": "locked_out_user",
+    "problemUser": "problem_user",
+    "password": "secret_sauce",
+    "wrongUsername": "wrong_user",
+    "wrongPassword": "wrong_password"
+  },
+  "items": {
+    "backpack": "Sauce Labs Backpack",
+    "bikeLight": "Sauce Labs Bike Light",
+    "boltTShirt": "Sauce Labs Bolt T-Shirt",
+    "fleeceJacket": "Sauce Labs Fleece Jacket"
+  },
+  "checkoutInfo": {
+    "firstName": "Narayan",
+    "lastName": "Thapa",
+    "postalCode": "4000"
+  }
+}
