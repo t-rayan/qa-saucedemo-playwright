@@ -64,7 +64,7 @@ npx playwright test --headed	Runs tests in a visible browser
 npx playwright show-report	Opens the latest HTML test report
 👤 About the Author
 Narayan Thapa Aspiring QA Automation Engineer | BSc IT (Computing) 📍 Brisbane, Australia
-I am a technical professional transitioning into Quality Assurance, with a strong background in software development (Next.js, Flutter) and a passion for building robust automated testing solutions.
+I am a technical professional transitioning into Quality Assurance, with a strong background in software development (Next.js) and a passion for building robust automated testing solutions.
 
 📄 License
 This project is open-source and available under the MIT License.
